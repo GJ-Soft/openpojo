@@ -1,0 +1,85 @@
+# Continuous integration: build and test on every push and pull request.
+#
+# The parent pom (org.gjsoft.java:gjs-java-base-parent) lives in the gjs
+# repository and is not on Maven Central yet. So the job checks out gjs next to
+# openpojo and runs its arranque.sh, which installs the chain of parent poms in
+# the runner's local repository. Once gjs is published those steps go away: the
+# parent will resolve from Central like any other.
+#
+# openpojo is plain Java, so one Windows job is enough. Windows because it is
+# where the gjs stack is built and tested; arranque.sh runs there with the bash
+# of Git for Windows.
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: windows-latest
+    steps:
+      - name: Check out openpojo
+        uses: actions/checkout@v4
+        with:
+          path: openpojo
+
+      - name: Check out gjs
+        uses: actions/checkout@v4
+        with:
+          repository: GJ-Soft/gjs
+          path: gjs
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      # arranque.sh installs gjs-python-common, which is built with pip.
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+
+      # Everything but the org/gjsoft artifacts: they keep the same version
+      # from one run to the next, and a cached copy would be a stale parent.
+      - name: Cache the local Maven repository
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.m2/repository
+            !~/.m2/repository/org/gjsoft
+          key: m2-${{ runner.os }}-${{ hashFiles('openpojo/pom.xml', 'gjs/**/pom.xml') }}
+          restore-keys: m2-${{ runner.os }}-
+
+      # Through bash: on Windows, git does not keep the executable bit.
+      - name: Install the gjs parent poms
+        shell: bash
+        run: bash gjs/arranque.sh
+
+      - name: Build and test
+        working-directory: openpojo
+        run: mvn -B -ntp verify
+
+      - name: Upload the logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs
+          path: |
+            gjs/target/arranque/
+            openpojo/target/surefire-reports/
+          if-no-files-found: ignore
+          retention-days: 7
