@@ -36,5 +36,6 @@ public class LessThan extends ArrayLengthBasedComparator {
 	 * Creates an instance ready to use.
 	 */
 	public LessThan() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

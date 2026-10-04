@@ -46,7 +46,7 @@ public class EqualsAndHashCodeMatchRule implements Rule {
 
 	private boolean hasHashCode(PojoClass pojoClass) {
 		for (PojoMethod method : pojoClass.getPojoMethods())
-			if (method.getName().equals("hashCode") && method.getPojoParameters().size() == 0)
+			if (method.getName().equals("hashCode") && method.getPojoParameters().isEmpty())
 				return true;
 		return false;
 	}
@@ -62,5 +62,6 @@ public class EqualsAndHashCodeMatchRule implements Rule {
 	 * Creates an instance ready to use.
 	 */
 	public EqualsAndHashCodeMatchRule() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

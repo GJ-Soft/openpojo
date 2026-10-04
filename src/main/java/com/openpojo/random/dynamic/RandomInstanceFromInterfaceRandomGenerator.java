@@ -76,5 +76,6 @@ public class RandomInstanceFromInterfaceRandomGenerator {
 	 * Creates an instance ready to use.
 	 */
 	public RandomInstanceFromInterfaceRandomGenerator() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

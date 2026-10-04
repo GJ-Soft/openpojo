@@ -76,5 +76,6 @@ public final class BusinessIdentityTester implements Tester {
 	 * Creates an instance ready to use.
 	 */
 	public BusinessIdentityTester() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

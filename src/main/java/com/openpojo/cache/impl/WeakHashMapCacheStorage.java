@@ -53,5 +53,6 @@ public class WeakHashMapCacheStorage<T> implements CacheStorage<T> {
 	 * Creates an instance ready to use.
 	 */
 	public WeakHashMapCacheStorage() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

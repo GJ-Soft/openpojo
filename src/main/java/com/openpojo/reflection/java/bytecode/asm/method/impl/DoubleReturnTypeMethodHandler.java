@@ -56,5 +56,6 @@ public class DoubleReturnTypeMethodHandler extends AbstractReturnTypeMethodHandl
 	 * Creates an instance ready to use.
 	 */
 	public DoubleReturnTypeMethodHandler() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

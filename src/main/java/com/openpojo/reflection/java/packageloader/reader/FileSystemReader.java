@@ -97,7 +97,7 @@ public class FileSystemReader {
 		final Set<String> subPaths = new HashSet<>();
 		for (final File file : getEntries()) {
 			if (file.isDirectory()) {
-				if (packageName != null && packageName.length() > 0)
+				if (packageName != null && !packageName.isEmpty())
 					subPaths.add(fromJDKPathToJDKPackage(packageName) + Java.PACKAGE_DELIMITER + file.getName());
 				else
 					subPaths.add(file.getName());

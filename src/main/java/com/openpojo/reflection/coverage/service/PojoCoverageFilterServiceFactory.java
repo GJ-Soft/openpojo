@@ -52,8 +52,8 @@ public class PojoCoverageFilterServiceFactory {
 		for (CoverageDetector coverageDetector : KNOWN_COVERAGE_DETECTORS) {
 			if (coverageDetector.isLoaded()) {
 				Logger logger = LoggerFactory.getLogger(PojoCoverageFilterServiceFactory.class);
-				logger.info(
-						coverageDetector.getName() + " detected, auto-configuring OpenPojo to ignore its structures.");
+				logger.info("{} detected, auto-configuring OpenPojo to ignore its structures.",
+						coverageDetector.getName());
 				pojoCoverageFilterService.registerCoverageDetector(coverageDetector);
 			}
 		}

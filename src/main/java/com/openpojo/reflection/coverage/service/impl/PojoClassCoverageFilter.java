@@ -56,5 +56,6 @@ public class PojoClassCoverageFilter implements PojoClassFilter {
 	 * Creates an instance ready to use.
 	 */
 	public PojoClassCoverageFilter() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

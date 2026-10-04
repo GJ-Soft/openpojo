@@ -30,27 +30,27 @@ import com.openpojo.reflection.java.bytecode.asm.method.impl.*;
  */
 public class MethodHandlerFactory {
 
-	private final Map<String, MethodHandler> SIGNATURE_METHOD_HANDLERS = new HashMap<>();
-	private final Map<String, MethodHandler> METHOD_NAME_HANDLERS = new HashMap<>();
-	private final Map<String, MethodHandler> RETURN_TYPE_METHOD_HANDLERS = new HashMap<>();
+	private final Map<String, MethodHandler> signatureMethodHandlers = new HashMap<>();
+	private final Map<String, MethodHandler> methodNameHandlers = new HashMap<>();
+	private final Map<String, MethodHandler> returnTypeMethodHandlers = new HashMap<>();
 
-	private final MethodHandler DEFAULT_RETURN_TYPE_METHOD_HANDLER = new DefaultReturnTypeMethodHandler();
+	private final MethodHandler defaultReturnTypeMethodHandler = new DefaultReturnTypeMethodHandler();
 	private static final MethodHandlerFactory INSTANCE = new MethodHandlerFactory();
 
 	private MethodHandlerFactory() {
-		SIGNATURE_METHOD_HANDLERS.put("toString()Ljava/lang/String;", new ToStringMethodHandler());
+		signatureMethodHandlers.put("toString()Ljava/lang/String;", new ToStringMethodHandler());
 
-		METHOD_NAME_HANDLERS.put("<init>", new InitMethodHandler());
+		methodNameHandlers.put("<init>", new InitMethodHandler());
 
-		RETURN_TYPE_METHOD_HANDLERS.put("boolean", new BooleanReturnTypeMethodHandler());
-		RETURN_TYPE_METHOD_HANDLERS.put("byte", new ByteReturnTypeMethodHandler());
-		RETURN_TYPE_METHOD_HANDLERS.put("char", new CharReturnTypeMethodHandler());
-		RETURN_TYPE_METHOD_HANDLERS.put("float", new FloatReturnTypeMethodHandler());
-		RETURN_TYPE_METHOD_HANDLERS.put("short", new ShortReturnTypeMethodHandler());
-		RETURN_TYPE_METHOD_HANDLERS.put("int", new IntReturnTypeMethodHandler());
-		RETURN_TYPE_METHOD_HANDLERS.put("long", new LongReturnTypeMethodHandler());
-		RETURN_TYPE_METHOD_HANDLERS.put("double", new DoubleReturnTypeMethodHandler());
-		RETURN_TYPE_METHOD_HANDLERS.put("void", new VoidReturnTypeMethodHandler());
+		returnTypeMethodHandlers.put("boolean", new BooleanReturnTypeMethodHandler());
+		returnTypeMethodHandlers.put("byte", new ByteReturnTypeMethodHandler());
+		returnTypeMethodHandlers.put("char", new CharReturnTypeMethodHandler());
+		returnTypeMethodHandlers.put("float", new FloatReturnTypeMethodHandler());
+		returnTypeMethodHandlers.put("short", new ShortReturnTypeMethodHandler());
+		returnTypeMethodHandlers.put("int", new IntReturnTypeMethodHandler());
+		returnTypeMethodHandlers.put("long", new LongReturnTypeMethodHandler());
+		returnTypeMethodHandlers.put("double", new DoubleReturnTypeMethodHandler());
+		returnTypeMethodHandlers.put("void", new VoidReturnTypeMethodHandler());
 	}
 
 	/**
@@ -65,16 +65,16 @@ public class MethodHandlerFactory {
 	 * @return the handler able to implement it.
 	 */
 	public MethodHandler getHandler(String methodSignature, String methodName, String returnType) {
-		MethodHandler methodHandler = SIGNATURE_METHOD_HANDLERS.get(methodSignature);
+		MethodHandler methodHandler = signatureMethodHandlers.get(methodSignature);
 
 		if (methodHandler == null)
-			methodHandler = METHOD_NAME_HANDLERS.get(methodName);
+			methodHandler = methodNameHandlers.get(methodName);
 
 		if (methodHandler == null)
-			methodHandler = RETURN_TYPE_METHOD_HANDLERS.get(returnType);
+			methodHandler = returnTypeMethodHandlers.get(returnType);
 
 		if (methodHandler == null)
-			methodHandler = DEFAULT_RETURN_TYPE_METHOD_HANDLER;
+			methodHandler = defaultReturnTypeMethodHandler;
 		return methodHandler;
 	}
 

@@ -40,5 +40,6 @@ public class NoNestedClassRule implements Rule {
 	 * Creates an instance ready to use.
 	 */
 	public NoNestedClassRule() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

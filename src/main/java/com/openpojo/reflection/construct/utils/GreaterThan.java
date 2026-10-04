@@ -36,5 +36,6 @@ public class GreaterThan extends ArrayLengthBasedComparator {
 	 * Creates an instance ready to use.
 	 */
 	public GreaterThan() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

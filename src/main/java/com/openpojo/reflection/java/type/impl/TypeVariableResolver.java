@@ -46,5 +46,6 @@ public class TypeVariableResolver implements TypeResolver<TypeVariable<?>> {
 	 * Creates an instance ready to use.
 	 */
 	public TypeVariableResolver() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

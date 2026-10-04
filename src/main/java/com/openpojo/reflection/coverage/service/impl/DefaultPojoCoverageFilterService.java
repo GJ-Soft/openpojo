@@ -50,5 +50,6 @@ public class DefaultPojoCoverageFilterService implements PojoCoverageFilterServi
 	 * Creates an instance ready to use.
 	 */
 	public DefaultPojoCoverageFilterService() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

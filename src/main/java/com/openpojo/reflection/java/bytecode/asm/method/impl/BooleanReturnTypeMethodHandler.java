@@ -56,5 +56,6 @@ public class BooleanReturnTypeMethodHandler extends AbstractReturnTypeMethodHand
 	 * Creates an instance ready to use.
 	 */
 	public BooleanReturnTypeMethodHandler() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

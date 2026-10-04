@@ -63,5 +63,6 @@ public class SerializableMustHaveSerialVersionUIDRule implements Rule {
 	 * Creates an instance ready to use.
 	 */
 	public SerializableMustHaveSerialVersionUIDRule() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

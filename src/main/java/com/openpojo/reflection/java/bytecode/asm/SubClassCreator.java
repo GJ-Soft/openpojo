@@ -57,13 +57,13 @@ class SubClassCreator extends ClassVisitor {
 	 */
 	@Override
 	public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
-		LOGGER.debug("Visiting class: " + name);
+		LOGGER.debug("Visiting class: {}", name);
 		this.className = name;
-		LOGGER.debug("Class Major Version: " + version);
+		LOGGER.debug("Class Major Version: {}", version);
 		cw.visit(version, ACC_PUBLIC + ACC_SUPER, generateWithName, null, name, null);
 
-		LOGGER.debug("Super class: " + superName);
-		LOGGER.debug("Generating new Class with name:" + generateWithName);
+		LOGGER.debug("Super class: {}", superName);
+		LOGGER.debug("Generating new Class with name:{}", generateWithName);
 		super.visit(version, access, name, signature, superName, interfaces);
 	}
 
@@ -72,8 +72,9 @@ class SubClassCreator extends ClassVisitor {
 	 */
 	@Override
 	public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
-		LOGGER.debug("Method: " + name + " access:" + access + " desc:" + desc + " signature:" + signature
-				+ " exceptions:" + Arrays.toString(exceptions));
+		if (LOGGER.isDebugEnabled())
+			LOGGER.debug("Method: {} access:{} desc:{} signature:{} exceptions:{}", name, access, desc, signature,
+					Arrays.toString(exceptions));
 		if (name.equals("<init>") && (access & (ACC_PUBLIC | ACC_PROTECTED)) != 0 || (access & ACC_ABSTRACT) != 0)
 			handleMethod(access, name, desc, signature, exceptions);
 		return super.visitMethod(access, name, desc, signature, exceptions);

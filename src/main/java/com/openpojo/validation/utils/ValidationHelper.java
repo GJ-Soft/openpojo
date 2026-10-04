@@ -106,7 +106,7 @@ public final class ValidationHelper {
 			rule.evaluate(pojoClass);
 		}
 
-		if ((pojoClass.isInterface() || pojoClass.isEnum()) && testers.size() > 0) {
+		if ((pojoClass.isInterface() || pojoClass.isEnum()) && !testers.isEmpty()) {
 			logger.warn("Attempt to execute behavioural test on non-constructable class=[{}] ignored",
 					pojoClass.getClazz());
 			return;

@@ -134,13 +134,13 @@ public final class BasicRandomGenerator implements RandomGenerator {
 			return CHARACTERS[RANDOM.nextInt(CHARACTERS.length)];
 
 		if (autoBoxedType == String.class) {
-			String randomString = "";
+			final StringBuilder randomString = new StringBuilder();
 
 			/* prevent zero length string lengths */
 			for (int count = 0; count < RANDOM.nextInt(MAX_RANDOM_STRING_LENGTH + 1) + 1; count++) {
-				randomString += RandomFactory.getRandomValue(Character.class);
+				randomString.append(RandomFactory.getRandomValue(Character.class));
 			}
-			return randomString;
+			return randomString.toString();
 		}
 
 		if (autoBoxedType == Date.class)

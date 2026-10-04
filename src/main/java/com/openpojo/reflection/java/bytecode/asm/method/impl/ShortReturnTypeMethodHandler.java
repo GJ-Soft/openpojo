@@ -56,5 +56,6 @@ public class ShortReturnTypeMethodHandler extends AbstractReturnTypeMethodHandle
 	 * Creates an instance ready to use.
 	 */
 	public ShortReturnTypeMethodHandler() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

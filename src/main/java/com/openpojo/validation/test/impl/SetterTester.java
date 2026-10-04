@@ -18,6 +18,7 @@
 
 package com.openpojo.validation.test.impl;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.openpojo.random.RandomFactory;
@@ -46,8 +47,9 @@ public class SetterTester implements Tester {
 				value = RandomFactory.getRandomValue(fieldEntry);
 
 				SameInstanceIdentityHandlerStub.registerIdentityHandlerStubForValue(value);
-				LoggerFactory.getLogger(this.getClass()).debug("Testing Field [{}] with value [{}]",
-						fieldEntry, safeToString(value));
+				final Logger logger = LoggerFactory.getLogger(this.getClass());
+				if (logger.isDebugEnabled())
+					logger.debug("Testing Field [{}] with value [{}]", fieldEntry, safeToString(value));
 
 				fieldEntry.invokeSetter(classInstance, value);
 
@@ -65,5 +67,6 @@ public class SetterTester implements Tester {
 	 * Creates an instance ready to use.
 	 */
 	public SetterTester() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

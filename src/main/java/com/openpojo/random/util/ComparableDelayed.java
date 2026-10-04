@@ -46,5 +46,6 @@ public class ComparableDelayed implements Delayed {
 	 * Creates an instance ready to use.
 	 */
 	public ComparableDelayed() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

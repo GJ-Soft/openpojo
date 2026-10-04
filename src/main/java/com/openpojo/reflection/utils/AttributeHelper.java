@@ -45,7 +45,7 @@ public class AttributeHelper {
 	 */
 	public static void registerFieldPrefix(final String prefix) {
 		// don't allow null, empty or duplicate prefixes.
-		if (prefix != null && prefix.length() > 0) {
+		if (prefix != null && !prefix.isEmpty()) {
 			fieldPrefixes.add(prefix);
 		}
 	}

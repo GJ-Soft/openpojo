@@ -55,5 +55,6 @@ public class PojoClassCoverageAdapter implements PojoClassAdapter {
 	 * Creates an instance ready to use.
 	 */
 	public PojoClassCoverageAdapter() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

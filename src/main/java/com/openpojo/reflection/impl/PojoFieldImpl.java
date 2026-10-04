@@ -54,6 +54,8 @@ class PojoFieldImpl implements PojoField {
 		try {
 			this.field.setAccessible(true);
 		} catch (InaccessibleObjectException e) {
+			// The module does not open the package: access is left as it is, and a
+			// get or set that needs it fails later with a ReflectionException.
 		}
 		fieldGetter = PojoMethodFactory.getFieldGetter(field);
 		fieldSetter = PojoMethodFactory.getFieldSetter(field);
@@ -63,11 +65,7 @@ class PojoFieldImpl implements PojoField {
 	public Object get(final Object instance) {
 		try {
 			return field.get(instance);
-		} catch (IllegalArgumentException e) {
-			throw ReflectionException.getInstance(e.getMessage(), e);
-		} catch (IllegalAccessException e) {
-			throw ReflectionException.getInstance(e.getMessage(), e);
-		} catch (NullPointerException e) {
+		} catch (IllegalArgumentException | IllegalAccessException | NullPointerException e) {
 			throw ReflectionException.getInstance(e.getMessage(), e);
 		}
 	}
@@ -81,11 +79,7 @@ class PojoFieldImpl implements PojoField {
 	public void set(final Object instance, final Object value) {
 		try {
 			field.set(instance, value);
-		} catch (IllegalArgumentException e) {
-			throw ReflectionException.getInstance(e.getMessage(), e);
-		} catch (IllegalAccessException e) {
-			throw ReflectionException.getInstance(e.getMessage(), e);
-		} catch (NullPointerException e) {
+		} catch (IllegalArgumentException | IllegalAccessException | NullPointerException e) {
 			throw ReflectionException.getInstance(e.getMessage(), e);
 		}
 	}

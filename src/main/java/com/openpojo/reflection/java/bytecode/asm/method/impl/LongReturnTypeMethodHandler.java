@@ -56,5 +56,6 @@ public class LongReturnTypeMethodHandler extends AbstractReturnTypeMethodHandler
 	 * Creates an instance ready to use.
 	 */
 	public LongReturnTypeMethodHandler() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

@@ -48,5 +48,6 @@ public class StrongRefHashMapCacheStorage<T> implements CacheStorage<T> {
 	 * Creates an instance ready to use.
 	 */
 	public StrongRefHashMapCacheStorage() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

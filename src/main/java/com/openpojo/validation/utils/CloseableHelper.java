@@ -40,6 +40,8 @@ public class CloseableHelper {
 					if (closeable != null)
 						closeable.close();
 				} catch (Exception ignored) {
+					// Closing is best effort: a failure here must not hide the result,
+					// or the error that is already on its way.
 				}
 	}
 

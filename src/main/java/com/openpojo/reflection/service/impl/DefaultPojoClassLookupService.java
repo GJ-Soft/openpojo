@@ -52,6 +52,7 @@ public class DefaultPojoClassLookupService implements Service, PojoClassLookupSe
 	 * Creates the service with the default configuration.
 	 */
 	public DefaultPojoClassLookupService() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 
 	public String getName() {

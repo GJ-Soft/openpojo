@@ -44,5 +44,6 @@ public final class NoPublicFieldsExceptStaticFinalRule implements Rule {
 	 * Creates an instance ready to use.
 	 */
 	public NoPublicFieldsExceptStaticFinalRule() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

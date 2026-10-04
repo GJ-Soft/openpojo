@@ -82,7 +82,7 @@ public class SerializableTester implements Tester {
 						+ pojoClass);
 			}
 		} else {
-			logger.warn("Class [" + clazz + "] is not serializable, skipping validation");
+			logger.warn("Class [{}] is not serializable, skipping validation", clazz);
 		}
 	}
 
@@ -111,7 +111,7 @@ public class SerializableTester implements Tester {
 		ObjectOutputStream objectOutputStream = null;
 
 		try {
-			logger.debug("Serializing [" + object + "] to byte[]");
+			logger.debug("Serializing [{}] to byte[]", object);
 			objectOutputStream = new ObjectOutputStream(outputStream);
 			objectOutputStream.writeObject(object);
 		} catch (NotSerializableException notSerializable) {
@@ -126,24 +126,25 @@ public class SerializableTester implements Tester {
 	}
 
 	private String getFailMessage(PojoClass pojoClass, NotSerializableException notSerializable) {
-		String message = "Class [" + pojoClass.getClazz().getName() + "] has non-serializable field type [";
+		final StringBuilder message = new StringBuilder("Class [").append(pojoClass.getClazz().getName())
+				.append("] has non-serializable field type [");
 		boolean found = false;
 		for (PojoField field : pojoClass.getPojoFields())
 			if (field.getType().getName().equals(notSerializable.getMessage())) {
 				found = true;
-				message += field;
+				message.append(field);
 			}
 		if (!found)
-			message += notSerializable.getMessage() + "] which is inherited from a super class";
+			message.append(notSerializable.getMessage()).append("] which is inherited from a super class");
 		else
-			message += "]";
-		return message;
+			message.append("]");
+		return message.toString();
 	}
 
 	private <T> T deSerialize(byte[] bytes, Class<T> clazz) {
 
 		final T outClazz;
-		logger.debug("De-Serializing [" + clazz.getName() + "] from byte[]");
+		logger.debug("De-Serializing [{}] from byte[]", clazz.getName());
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(bytes);
 		ObjectInputStream objectInputStream = null;
 

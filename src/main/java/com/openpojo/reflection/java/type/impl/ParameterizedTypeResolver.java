@@ -46,5 +46,6 @@ public class ParameterizedTypeResolver implements TypeResolver<ParameterizedType
 	 * Creates an instance ready to use.
 	 */
 	public ParameterizedTypeResolver() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

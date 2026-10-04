@@ -58,5 +58,6 @@ public class BusinessKeyFieldCache {
 	 * Creates an instance ready to use.
 	 */
 	public BusinessKeyFieldCache() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

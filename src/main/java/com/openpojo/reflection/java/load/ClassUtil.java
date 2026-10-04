@@ -76,8 +76,8 @@ public class ClassUtil {
 	public static Class<?> loadClass(String className, boolean initialize, ClassLoader classloader) {
 		try {
 			return Class.forName(className, initialize, classloader);
-		} catch (LinkageError linkageError) { // class depends on another that wasn't found.
-		} catch (ClassNotFoundException classNotFoundException) { // no such class found.
+		} catch (LinkageError | ClassNotFoundException notAvailable) {
+			// No such class, or it depends on another that was not found: null.
 		}
 		return null;
 	}

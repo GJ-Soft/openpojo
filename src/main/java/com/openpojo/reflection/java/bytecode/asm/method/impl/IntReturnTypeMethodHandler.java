@@ -56,5 +56,6 @@ public class IntReturnTypeMethodHandler extends AbstractReturnTypeMethodHandler 
 	 * Creates an instance ready to use.
 	 */
 	public IntReturnTypeMethodHandler() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

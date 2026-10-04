@@ -64,5 +64,6 @@ public class WildcardTypeResolver implements TypeResolver<WildcardType> {
 	 * Creates an instance ready to use.
 	 */
 	public WildcardTypeResolver() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

@@ -61,6 +61,7 @@ public class JarFileReader {
 			jarFile = new JarFile(jarFilePath, true);
 			initClassNames();
 		} catch (Exception e) {
+			// Not a readable jar: jarFile stays null, and isValid() says so.
 		}
 	}
 
@@ -69,6 +70,7 @@ public class JarFileReader {
 			jarFile = ((JarURLConnection) jarURL.openConnection()).getJarFile();
 			initClassNames();
 		} catch (Exception e) {
+			// Not a readable jar: jarFile stays null, and isValid() says so.
 		}
 	}
 
@@ -207,6 +209,7 @@ public class JarFileReader {
 				URLToFileSystemAdapter urlToFileSystemAdapter = new URLToFileSystemAdapter(new URI(fileName).toURL());
 				fileName = urlToFileSystemAdapter.getAsFile().getAbsolutePath();
 			} catch (MalformedURLException | URISyntaxException ignored) {
+				// Not a URL: the name is used as it is.
 			}
 		}
 

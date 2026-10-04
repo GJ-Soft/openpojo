@@ -102,5 +102,6 @@ public class DefaultRandomGeneratorService implements RandomGeneratorService {
 	 * Creates an instance ready to use.
 	 */
 	public DefaultRandomGeneratorService() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

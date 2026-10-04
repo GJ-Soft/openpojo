@@ -54,7 +54,7 @@ public class URLToFileSystemAdapter {
 		if (url == null)
 			throw ReflectionException.getInstance("Null URL not allowed");
 
-		if (url.getAuthority() != null && url.getAuthority().length() > 0)
+		if (url.getAuthority() != null && !url.getAuthority().isEmpty())
 			this.authority = url.getAuthority();
 		else
 			this.authority = null;

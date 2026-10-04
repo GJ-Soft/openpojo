@@ -48,5 +48,6 @@ public class VoidReturnTypeMethodHandler implements MethodHandler {
 	 * Creates an instance ready to use.
 	 */
 	public VoidReturnTypeMethodHandler() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

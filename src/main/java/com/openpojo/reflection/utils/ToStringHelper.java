@@ -74,14 +74,14 @@ public final class ToStringHelper {
 	 * @return String formatted, human readable list of pojoFields.
 	 */
 	private static String PojoFieldsToString(final List<PojoField> pojoFields, final Object instance) {
-		String pojoString = "";
+		final StringBuilder pojoString = new StringBuilder();
 		for (int index = 0; index < pojoFields.size(); index++) {
-			pojoString += pojoFields.get(index).toString(instance);
+			pojoString.append(pojoFields.get(index).toString(instance));
 			if (index < pojoFields.size() - 1) {
-				pojoString += LIST_TOKEN_SEPARATOR;
+				pojoString.append(LIST_TOKEN_SEPARATOR);
 			}
 		}
-		return pojoString;
+		return pojoString.toString();
 	}
 
 	private ToStringHelper() {

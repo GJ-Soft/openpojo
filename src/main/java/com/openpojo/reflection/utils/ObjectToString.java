@@ -41,86 +41,43 @@ public class ObjectToString {
 
 	private static ObjectToStringHandler getHandler(Object o) {
 		if (o == null)
-			return new ObjectToStringHandler() {
-				public String toString(Object o) {
-					return null;
-				}
-			};
+			return value -> null;
 
 		if (!o.getClass().isArray())
-			return new ObjectToStringHandler() {
-				public String toString(Object o) {
-					return o.toString();
-				}
-			};
+			return Object::toString;
 
 		// Array handling
 		// Since Java has no way of auto-boxing an array of primitives, each must be examined independently.
 		Class<?> componentType = o.getClass().getComponentType();
 
 		if (componentType == byte.class)
-			return new ObjectToStringHandler() {
-				public String toString(Object o) {
-					return Arrays.toString(byte[].class.cast(o));
-				}
-			};
+			return value -> Arrays.toString(byte[].class.cast(value));
 
 		if (componentType == char.class)
-			return new ObjectToStringHandler() {
-				public String toString(Object o) {
-					return Arrays.toString(char[].class.cast(o));
-				}
-			};
+			return value -> Arrays.toString(char[].class.cast(value));
 
 		if (componentType == short.class)
-			return new ObjectToStringHandler() {
-				public String toString(Object o) {
-					return Arrays.toString(short[].class.cast(o));
-				}
-			};
+			return value -> Arrays.toString(short[].class.cast(value));
 
 		if (componentType == int.class)
-			return new ObjectToStringHandler() {
-				public String toString(Object o) {
-					return Arrays.toString(int[].class.cast(o));
-				}
-			};
+			return value -> Arrays.toString(int[].class.cast(value));
 
 		if (componentType == long.class)
-			return new ObjectToStringHandler() {
-				public String toString(Object o) {
-					return Arrays.toString(long[].class.cast(o));
-				}
-			};
+			return value -> Arrays.toString(long[].class.cast(value));
 
 		if (componentType == float.class)
-			return new ObjectToStringHandler() {
-				public String toString(Object o) {
-					return Arrays.toString(float[].class.cast(o));
-				}
-			};
+			return value -> Arrays.toString(float[].class.cast(value));
 
 		if (componentType == double.class)
-			return new ObjectToStringHandler() {
-				public String toString(Object o) {
-					return Arrays.toString(double[].class.cast(o));
-				}
-			};
+			return value -> Arrays.toString(double[].class.cast(value));
 
 		if (componentType == boolean.class)
-			return new ObjectToStringHandler() {
-				public String toString(Object o) {
-					return Arrays.toString(boolean[].class.cast(o));
-				}
-			};
+			return value -> Arrays.toString(boolean[].class.cast(value));
 
-		return new ObjectToStringHandler() {
-			public String toString(Object o) {
-				return Arrays.deepToString((Object[]) o);
-			}
-		};
+		return value -> Arrays.deepToString((Object[]) value);
 	}
 
+	@FunctionalInterface
 	interface ObjectToStringHandler {
 		String toString(Object o);
 	}

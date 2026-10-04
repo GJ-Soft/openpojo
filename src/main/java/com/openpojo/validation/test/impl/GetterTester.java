@@ -18,6 +18,7 @@
 
 package com.openpojo.validation.test.impl;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.openpojo.random.RandomFactory;
@@ -50,8 +51,9 @@ public class GetterTester implements Tester {
 
 				SameInstanceIdentityHandlerStub.registerIdentityHandlerStubForValue(value);
 
-				LoggerFactory.getLogger(this.getClass()).debug("Testing Field [{}] with value [{}]", fieldEntry,
-						safeToString(value));
+				final Logger logger = LoggerFactory.getLogger(this.getClass());
+				if (logger.isDebugEnabled())
+					logger.debug("Testing Field [{}] with value [{}]", fieldEntry, safeToString(value));
 
 				Affirm.affirmEquals("Getter returned non equal value for field=[" + fieldEntry + "]", value,
 						fieldEntry.invokeGetter(classInstance));
@@ -66,5 +68,6 @@ public class GetterTester implements Tester {
 	 * Creates an instance ready to use.
 	 */
 	public GetterTester() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

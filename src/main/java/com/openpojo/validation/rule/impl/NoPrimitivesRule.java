@@ -46,5 +46,6 @@ public class NoPrimitivesRule implements Rule {
 	 * Creates an instance ready to use.
 	 */
 	public NoPrimitivesRule() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

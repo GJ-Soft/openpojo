@@ -47,5 +47,6 @@ public class ToStringTester implements Tester {
 	 * Creates an instance ready to use.
 	 */
 	public ToStringTester() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

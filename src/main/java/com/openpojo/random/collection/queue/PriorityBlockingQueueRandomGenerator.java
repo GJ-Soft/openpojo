@@ -31,7 +31,7 @@ import com.openpojo.random.util.Helper;
  * @author oshoukry
  */
 public class PriorityBlockingQueueRandomGenerator extends BaseCollectionRandomGenerator {
-	private final Class<?>[] TYPES = new Class<?>[]{PriorityBlockingQueue.class};
+	private static final Class<?>[] TYPES = new Class<?>[]{PriorityBlockingQueue.class};
 	/**
 	 * Instancia unica compartida.
 	 */

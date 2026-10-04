@@ -59,6 +59,7 @@ public class IdentityHandlerStub implements IdentityHandler {
 	}
 
 	public void validate(final Object object) {
+		// A stub: every object is valid.
 	}
 
 	/**

@@ -31,7 +31,7 @@ import com.openpojo.random.util.Helper;
  * @author oshoukry
  */
 public class CollectionRandomGenerator extends BaseCollectionRandomGenerator {
-	private final Class<?>[] TYPES = new Class<?>[]{Collection.class};
+	private static final Class<?>[] TYPES = new Class<?>[]{Collection.class};
 	/**
 	 * Instancia unica compartida.
 	 */

@@ -49,10 +49,12 @@ public class SynchronousQueueRandomGenerator extends BaseCollectionRandomGenerat
 		return Arrays.asList(TYPES);
 	}
 
+	@Override
 	public Collection<Object> doGenerate(Class<?> type) {
 		return getBasicInstance(type);
 	}
 
+	@Override
 	public Collection<Object> doGenerate(Parameterizable parameterizedType) {
 		return getBasicInstance(parameterizedType.getType());
 	}

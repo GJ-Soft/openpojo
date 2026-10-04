@@ -47,5 +47,6 @@ public class FilterPackageInfo implements PojoClassFilter {
 	 * Creates an instance ready to use.
 	 */
 	public FilterPackageInfo() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

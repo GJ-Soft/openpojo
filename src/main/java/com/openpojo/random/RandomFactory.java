@@ -120,9 +120,8 @@ public class RandomFactory {
 			return ((ParameterizableRandomGenerator) randomGenerator).doGenerate(parameterizable);
 		}
 
-		logger.warn("No ParametrizableRandomGenerator implementation found for parameterized type [" + parameterizable
-				+ "] " +
-				"creating non-parameterized instance ");
+		logger.warn("No ParametrizableRandomGenerator implementation found for parameterized type [{}] "
+				+ "creating non-parameterized instance ", parameterizable);
 		return getRandomValue(parameterizable.getType());
 	}
 

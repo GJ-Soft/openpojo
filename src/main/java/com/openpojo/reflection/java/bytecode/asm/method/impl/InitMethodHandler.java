@@ -126,5 +126,6 @@ public class InitMethodHandler implements MethodHandler {
 	 * Creates an instance ready to use.
 	 */
 	public InitMethodHandler() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

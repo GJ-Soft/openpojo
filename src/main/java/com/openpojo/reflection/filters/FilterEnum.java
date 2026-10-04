@@ -46,5 +46,6 @@ public class FilterEnum implements PojoClassFilter {
 	 * Creates an instance ready to use.
 	 */
 	public FilterEnum() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

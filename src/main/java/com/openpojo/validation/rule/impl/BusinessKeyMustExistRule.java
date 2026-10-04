@@ -47,5 +47,6 @@ public class BusinessKeyMustExistRule implements Rule {
 	 * Creates an instance ready to use.
 	 */
 	public BusinessKeyMustExistRule() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

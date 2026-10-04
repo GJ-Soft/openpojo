@@ -40,19 +40,19 @@ public class VersionParser {
 		if (version == null)
 			return parts;
 
-		String part = "";
+		final StringBuilder part = new StringBuilder();
 		for (char c : version.toCharArray()) {
 			if (c >= '0' && c <= '9')
-				part += c;
+				part.append(c);
 			if (c == '.') {
-				if (part.length() > 0)
-					parts.add(Integer.parseInt(part));
-				part = "";
+				if (!part.isEmpty())
+					parts.add(Integer.parseInt(part.toString()));
+				part.setLength(0);
 			}
 		}
 
-		if (part.length() > 0)
-			parts.add(Integer.parseInt(part));
+		if (!part.isEmpty())
+			parts.add(Integer.parseInt(part.toString()));
 
 		return parts;
 	}

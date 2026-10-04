@@ -53,5 +53,6 @@ public class SerializableComparableObject implements Serializable, Comparable<Ob
 	 * Creates an instance ready to use.
 	 */
 	public SerializableComparableObject() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

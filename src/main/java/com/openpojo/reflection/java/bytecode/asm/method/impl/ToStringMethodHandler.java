@@ -56,5 +56,6 @@ public class ToStringMethodHandler implements MethodHandler {
 	 * Creates an instance ready to use.
 	 */
 	public ToStringMethodHandler() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

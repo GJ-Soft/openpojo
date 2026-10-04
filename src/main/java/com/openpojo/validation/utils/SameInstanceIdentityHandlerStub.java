@@ -65,6 +65,7 @@ public class SameInstanceIdentityHandlerStub implements IdentityHandler {
 	}
 
 	public void validate(final Object object) {
+		// A stub: every object is valid.
 	}
 
 	public int generateHashCode(final Object object) {
@@ -79,5 +80,6 @@ public class SameInstanceIdentityHandlerStub implements IdentityHandler {
 	 * Creates an instance ready to use.
 	 */
 	public SameInstanceIdentityHandlerStub() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

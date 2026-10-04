@@ -175,9 +175,8 @@ public class PojoClassImpl implements PojoClass {
 
 	@Override
 	public String toString() {
-		return String.format(this.getClass().getName() + " [clazz=%s, pojoFields=%s, pojoMethods=%s]", clazz,
-				pojoFields,
-				pojoMethods);
+		return String.format("%s [clazz=%s, pojoFields=%s, pojoMethods=%s]", this.getClass().getName(), clazz,
+				pojoFields, pojoMethods);
 	}
 
 	public String toString(final Object instance) {

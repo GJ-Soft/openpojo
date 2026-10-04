@@ -209,6 +209,25 @@ org.gjs.java.tools:openpojo
   instead of the old `-Psonatype-oss-release,openpojo-release`, where the first did not
   exist anywhere in the parent chain and the second was redundant.
 
+### Code clean-up
+
+[Changed]
+- A pass over the SonarCloud analysis of `src/main`, with no change in behaviour and
+  no change to the public API:
+  - `isEmpty()` instead of comparing lengths and sizes, a `StringBuilder` instead of
+    `+=` in loops, the two missing `@Override`, and the `catch` blocks with the same
+    body merged into one.
+  - The anonymous handlers of `ObjectToString` are lambdas, and its interface is a
+    `@FunctionalInterface`.
+  - Log messages use the SLF4J `{}` placeholders instead of concatenation, and the
+    arguments that cost something to build (`safeToString`, `Arrays.toString`) are only
+    computed when debug is on.
+  - The `TYPES` arrays of the collection generators are `static final`, and the private
+    handler maps of `MethodHandlerFactory` have field names instead of constant names.
+  - Every empty constructor, method and `catch` says why it is empty.
+- Left as they are, because they are API or design: the names of the public enum
+  constants and the `INSTANCE` fields of the singletons.
+
 ### Tests
 
 [Changed]

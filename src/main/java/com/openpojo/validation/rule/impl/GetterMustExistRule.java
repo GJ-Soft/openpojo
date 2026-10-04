@@ -44,5 +44,6 @@ public class GetterMustExistRule implements Rule {
 	 * Creates an instance ready to use.
 	 */
 	public GetterMustExistRule() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

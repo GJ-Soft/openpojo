@@ -56,5 +56,6 @@ public class FloatReturnTypeMethodHandler extends AbstractReturnTypeMethodHandle
 	 * Creates an instance ready to use.
 	 */
 	public FloatReturnTypeMethodHandler() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

@@ -73,5 +73,6 @@ public class DefaultRandomGenerator implements RandomGenerator {
 	 * Creates an instance ready to use.
 	 */
 	public DefaultRandomGenerator() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

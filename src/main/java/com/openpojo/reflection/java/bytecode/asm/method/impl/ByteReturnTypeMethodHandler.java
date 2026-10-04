@@ -56,5 +56,6 @@ public class ByteReturnTypeMethodHandler extends AbstractReturnTypeMethodHandler
 	 * Creates an instance ready to use.
 	 */
 	public ByteReturnTypeMethodHandler() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

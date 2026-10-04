@@ -42,5 +42,6 @@ public final class NoPublicFieldsRule implements Rule {
 	 * Creates an instance ready to use.
 	 */
 	public NoPublicFieldsRule() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

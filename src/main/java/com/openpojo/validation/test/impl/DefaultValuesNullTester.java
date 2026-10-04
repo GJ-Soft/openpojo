@@ -49,5 +49,6 @@ public class DefaultValuesNullTester implements Tester {
 	 * Creates an instance ready to use.
 	 */
 	public DefaultValuesNullTester() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

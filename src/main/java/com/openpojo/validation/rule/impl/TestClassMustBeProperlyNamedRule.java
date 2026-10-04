@@ -95,7 +95,7 @@ public class TestClassMustBeProperlyNamedRule implements Rule {
 			}
 		}
 
-		if (loadedAnnotations.size() == 0) {
+		if (loadedAnnotations.isEmpty()) {
 			ArrayList<String> namedAnnotations = new ArrayList<>();
 			namedAnnotations.addAll(annotations);
 			throw new IllegalStateException("No annotations loaded, expected any of " + namedAnnotations);

@@ -65,5 +65,6 @@ public class GenericArrayTypeResolver implements TypeResolver<GenericArrayType> 
 	 * Creates an instance ready to use.
 	 */
 	public GenericArrayTypeResolver() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

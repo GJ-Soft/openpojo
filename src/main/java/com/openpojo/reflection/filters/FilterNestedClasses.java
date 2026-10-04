@@ -46,5 +46,6 @@ public class FilterNestedClasses implements PojoClassFilter {
 	 * Creates an instance ready to use.
 	 */
 	public FilterNestedClasses() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

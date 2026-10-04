@@ -58,6 +58,8 @@ public class PojoMethodImpl implements PojoMethod {
 		try {
 			accessibleObject.setAccessible(true);
 		} catch (InaccessibleObjectException e) {
+			// The module does not open the package: access is left as it is, and an
+			// invocation that needs it fails later with a ReflectionException.
 		}
 	}
 
@@ -85,24 +87,15 @@ public class PojoMethodImpl implements PojoMethod {
 		if (isConstructor()) {
 			try {
 				return getAsConstructor().newInstance(parameters);
-			} catch (final IllegalArgumentException e) {
-				throw ReflectionException.getInstance(e.getMessage(), e);
-			} catch (final InstantiationException e) {
-				throw ReflectionException.getInstance(e.getMessage(), e);
-			} catch (final IllegalAccessException e) {
-				throw ReflectionException.getInstance(e.getMessage(), e);
-			} catch (final InvocationTargetException e) {
+			} catch (final IllegalArgumentException | InstantiationException | IllegalAccessException
+					| InvocationTargetException e) {
 				throw ReflectionException.getInstance(e.getMessage(), e);
 			}
 		}
 
 		try {
 			return getAsMethod().invoke(instance, parameters);
-		} catch (final IllegalArgumentException e) {
-			throw ReflectionException.getInstance(e.getMessage(), e);
-		} catch (final IllegalAccessException e) {
-			throw ReflectionException.getInstance(e.getMessage(), e);
-		} catch (final InvocationTargetException e) {
+		} catch (final IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
 			throw ReflectionException.getInstance(e.getMessage(), e);
 		}
 	}

@@ -45,5 +45,6 @@ public class NoResolveTypeResolver implements TypeResolver<Type> {
 	 * Creates an instance ready to use.
 	 */
 	public NoResolveTypeResolver() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

@@ -33,7 +33,7 @@ import com.openpojo.random.util.Helper;
  * @author oshoukry
  */
 public class AbstractQueueRandomGenerator extends BaseCollectionRandomGenerator {
-	private final Class<?>[] TYPES = new Class<?>[]{AbstractQueue.class};
+	private static final Class<?>[] TYPES = new Class<?>[]{AbstractQueue.class};
 	/**
 	 * Instancia unica compartida.
 	 */

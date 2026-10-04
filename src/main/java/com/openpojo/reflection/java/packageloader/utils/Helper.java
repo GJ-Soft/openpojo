@@ -123,7 +123,7 @@ public class Helper {
 	static String getDirectSubPackageName(final String parentPackageName, final String subPackageName) {
 		String parentPackageNameAsPath = "";
 
-		if (parentPackageName != null && parentPackageName.length() > 0)
+		if (parentPackageName != null && !parentPackageName.isEmpty())
 			parentPackageNameAsPath = parentPackageName + Java.PACKAGE_DELIMITER;
 
 		if (subPackageName.startsWith(parentPackageNameAsPath)

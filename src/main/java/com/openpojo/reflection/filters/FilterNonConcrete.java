@@ -46,5 +46,6 @@ public class FilterNonConcrete implements PojoClassFilter {
 	 * Creates an instance ready to use.
 	 */
 	public FilterNonConcrete() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }

@@ -46,5 +46,6 @@ public class SimpleClassLoader extends ClassLoader {
 	 * Creates an instance ready to use.
 	 */
 	public SimpleClassLoader() {
+		// Nothing to initialize: the fields keep their default values.
 	}
 }
