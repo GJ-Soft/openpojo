@@ -8,7 +8,7 @@ A Java 21 port of [OpenPojo](https://github.com/GJ-Soft/openpojo) 1.0.0, by GJ S
 <dependency>
   <groupId>org.gjsoft.java.tools</groupId>
   <artifactId>openpojo</artifactId>
-  <version>1.0.0-RC.2</version>
+  <version>1.0.0</version>
   <scope>test</scope>
 </dependency>
 ```
