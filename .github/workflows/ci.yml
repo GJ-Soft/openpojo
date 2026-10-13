@@ -2,13 +2,14 @@
 #
 # The parent pom (org.gjsoft.java:gjs-java-base-parent) lives in the gjs
 # repository and is not on Maven Central yet. So the job checks out gjs next to
-# openpojo and runs its arranque.sh, which installs the chain of parent poms in
-# the runner's local repository. Once gjs is published those steps go away: the
+# openpojo and builds its pomMinInstall.xml, which installs the parent poms and
+# the bit of Java openpojo needs in the runner's local repository. It is the
+# first step of gjs/install-gjs.sh; the rest of that script builds the whole of
+# gjs and is not needed here. Once gjs is published those steps go away: the
 # parent will resolve from Central like any other.
 #
 # openpojo is plain Java, so one Windows job is enough. Windows because it is
-# where the gjs stack is built and tested; arranque.sh runs there with the bash
-# of Git for Windows.
+# where the gjs stack is built and tested.
 name: CI
 
 on:
@@ -47,12 +48,6 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      # arranque.sh installs gjs-python-common, which is built with pip.
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.14'
-
       # Everything but the org/gjsoft artifacts: they keep the same version
       # from one run to the next, and a cached copy would be a stale parent.
       - name: Cache the local Maven repository
@@ -64,10 +59,8 @@ jobs:
           key: m2-${{ runner.os }}-${{ hashFiles('openpojo/pom.xml', 'gjs/**/pom.xml') }}
           restore-keys: m2-${{ runner.os }}-
 
-      # Through bash: on Windows, git does not keep the executable bit.
       - name: Install the gjs parent poms
-        shell: bash
-        run: bash gjs/arranque.sh
+        run: mvn -B -ntp -DskipTests -f gjs/pomMinInstall.xml install
 
       - name: Build and test
         working-directory: openpojo
@@ -78,8 +71,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-logs
-          path: |
-            gjs/target/arranque/
-            openpojo/target/surefire-reports/
+          path: openpojo/target/surefire-reports/
           if-no-files-found: ignore
           retention-days: 7
