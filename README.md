@@ -81,4 +81,5 @@ public class Person {
 }
 ```
 
+
 More examples and tutorials in the [original project's wiki](https://github.com/oshoukry/openpojo/wiki).
